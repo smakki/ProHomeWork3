@@ -6,10 +6,14 @@ internal static class Program
 {
     private static async Task Main()
     {
+        var path = Environment.CurrentDirectory;
+        var directoryInfo = new DirectoryInfo(path)?.Parent?.Parent?.Parent;
+        Console.WriteLine(directoryInfo);
         await CountSpacesInThreeFiles();
         Console.WriteLine("");
-        await CountSpacesInAllFilesInDirectory("D:\\source\\projects\\learning\\ProHomeWork3\\ProHomeWork3");
+        await CountSpacesInAllFilesInDirectory(directoryInfo.FullName);
         Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
 
     private static async Task CountSpacesInAllFilesInDirectory(string directory)
